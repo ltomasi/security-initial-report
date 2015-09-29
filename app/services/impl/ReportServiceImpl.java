@@ -1,20 +1,30 @@
 package services.impl;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import com.github.mustachejava.DefaultMustacheFactory;
+import com.github.mustachejava.Mustache;
+import com.github.mustachejava.MustacheFactory;
 import com.google.inject.Inject;
 
 import models.exception.InvalidW3afReportException;
 import models.factory.VulnerabilityFactory;
+import models.securityvulnerabilities.InitialReport;
 import models.securityvulnerabilities.SecurityVulnerability;
-import models.securityvulnerabilities.vulnerabilities.SqlInjection;
 import models.w3afreport.Vulnerability;
 import models.w3afreport.W3AfRun;
 import services.api.ReportService;
@@ -50,26 +60,53 @@ public class ReportServiceImpl implements ReportService {
         }
 
         List<SecurityVulnerability> vulnerabilities = this.createVulnerabilities(w3afRun);
-        for (SecurityVulnerability securityVulnerability : vulnerabilities) {
-            System.out.println(securityVulnerability);
+        InitialReport initialReport = new InitialReport(vulnerabilities);
+        MustacheFactory mf = new DefaultMustacheFactory();
+        Mustache mustache = mf.compile("report.template");
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        OutputStreamWriter writer = new OutputStreamWriter(baos, Charset.forName("UTF-8"));
+        try {
+            mustache.execute(writer, initialReport).flush();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            try {
+                writer.close();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
 
-        HashMap<Class<? extends SecurityVulnerability>, String> teste = new HashMap<Class<? extends SecurityVulnerability>, String>();
-        teste.put(SqlInjection.class, "asdf");
-
-        System.out.println("=========================");
+        try {
+            FileOutputStream fos = new FileOutputStream(new File("teste.tex"));
+            fos.write(baos.toByteArray());
+            fos.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     private List<SecurityVulnerability> createVulnerabilities(W3AfRun w3AfRun) {
-        List<SecurityVulnerability> vulnerabilities = new ArrayList<SecurityVulnerability>();
+        Map<String, SecurityVulnerability> vulnerabilites = new HashMap<String, SecurityVulnerability>();
         for (Vulnerability vulnerability : w3AfRun.getVulnerability()) {
-            SecurityVulnerability securityVulnerability = this.vulnerabilityFactory.createVulnerability(vulnerability.getName());
-            if (securityVulnerability != null) {
+            String vulnerabilityKeyName = vulnerability.getName();
+
+            if (vulnerabilites.containsKey(vulnerabilityKeyName)) {
+                SecurityVulnerability securityVulnerability = vulnerabilites.get(vulnerabilityKeyName);
                 securityVulnerability.decode(vulnerability);
-                vulnerabilities.add(securityVulnerability);
+            } else {
+                SecurityVulnerability securityVulnerability = this.vulnerabilityFactory.createVulnerability(vulnerabilityKeyName);
+                if (securityVulnerability != null) {
+                    vulnerabilites.put(vulnerabilityKeyName, securityVulnerability);
+                    securityVulnerability.decode(vulnerability);
+                }
             }
         }
-        return vulnerabilities;
+        return new ArrayList<>(vulnerabilites.values());
     }
 
 }
