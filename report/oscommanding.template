@@ -1,0 +1,16 @@
+\section{OS Injection}
+
+\subsection{Descrição}
+
+Descrição sobre a parda ta ligado
+
+\subsection{Remediação}
+
+O que fazer para arrumar
+
+\subsection{Vetores de ataque}
+
+{{#vectors}}
+E agora {{vulParam}}
+e agora
+{{/vectors}}

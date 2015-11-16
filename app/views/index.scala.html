@@ -1,7 +1,17 @@
-@(message: String)
+@import helper._
 
-@main("Welcome to Play") {
+@main("Security Initial Report") {
 
-    @play20.welcome(message, style = "Java")
+<h1>Gerar relatório</h1>
+
+<p>Faça o upload do relatório XML gerado pela ferramenta W3AF</p>
+@form(action = routes.Application.upload, 'enctype -> "multipart/form-data") {
+
+    <input type="file" name="w3af_report">
+    <p>
+        <input class="btn btn-lg btn-success" type="submit" value="Obter relatório">
+    </p>
+
+}
 
 }

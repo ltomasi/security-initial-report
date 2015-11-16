@@ -34,8 +34,7 @@ public class ReportServiceImpl implements ReportService {
     @Inject
     VulnerabilityFactory vulnerabilityFactory;
 
-    @Override
-    public W3AfRun unmarshalW3afReport(InputStream inputStream) throws InvalidW3afReportException, JAXBException {
+    private W3AfRun unmarshalW3afReport(InputStream inputStream) throws InvalidW3afReportException, JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(W3AfRun.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
@@ -50,7 +49,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public void generateInitialReport(InputStream inputStream) {
+    public File generateInitialReport(InputStream inputStream) {
         W3AfRun w3afRun = null;
         try {
             w3afRun = this.unmarshalW3afReport(inputStream);
@@ -80,14 +79,16 @@ public class ReportServiceImpl implements ReportService {
             }
         }
 
+        File file = new File("securityInitialReport.tex");
         try {
-            FileOutputStream fos = new FileOutputStream(new File("teste.tex"));
+            FileOutputStream fos = new FileOutputStream(file);
             fos.write(baos.toByteArray());
             fos.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return file;
     }
 
     private List<SecurityVulnerability> createVulnerabilities(W3AfRun w3AfRun) {

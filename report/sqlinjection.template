@@ -2,7 +2,11 @@
 
 \subsection{Descrição}
 
-Descrição sobre a parda ta ligado
+As falhas de injeção SQL surgem com o envio de dados não confiáveis que são interpretados como parte de uma consulta SQL. O atacante informa dados que enganam o interpretador e executam comandos que acessam dados sem a devida autorização.
+
+\subsection{Impacto}
+
+
 
 \subsection{Remediação}
 

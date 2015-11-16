@@ -1,0 +1,22 @@
+\section{Apache Server Version}
+
+\subsection{Descrição}
+
+O servidor Apache está com o módulo de status habilitado.
+
+\subsection{Impacto}
+
+Qualquer usuário pode acessar as informações de configuração do Apache.
+
+\subsection{Remediação}
+
+O módulo \emph{mod_status} deve ser desativado.
+
+\subsection{Vetores de ataque}
+
+{{#vectors}}
+E agora {{vulParam}}
+e agora
+{{/vectors}}
+
+The web server has the apache server status module enabled which discloses the following remote server version: &quot;Apache/2.4.7 (Ubuntu) PHP/5.5.9-1ubuntu4.11&quot;.

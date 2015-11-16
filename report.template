@@ -23,13 +23,17 @@
 \sumario
 
 \chapter{Introduçăo}
-Introdução
+Este documento refere-se à execução de testes de penetração no projeto da Bry. Os testes que serão aplicados no alvo (comumente conhecidos como PenTest, ou Penetration Tests) são de extrema importância, pois têm como objetivo avaliar a segurança do mesmo através da simulação de um ataque por uma fonte maliciosa. Durante o teste do sistema e o processo de avaliação, descrito nas próximas sessões, serão detalhadas as possíveis vulnerabilidades encontradas.
 
 \chapter{Avaliação automatizada}
-Avalição automaticada
 
-\section{Ferramenta w3af}
-descricao da ferramenta
+\section{Metodologia OWASP}
+Para realizar os testes, tomaremos como base documentos da OWASP (Open Web Application Security Project). Esse projeto é bastante focado em auxiliar as empresas a desenvolverem, operarem e manterem aplicações cada vez mais seguras e confiáveis, e é altamente utilizado como guia para testes, uma vez que distribui ferramentas e tutoriais detalhados abertamente. Um dos documentos publicados a cada três anos pela OWASP é o Top Ten.
+
+\section{Ferramenta W3AF}
+Antes de aplicarmos qualquer teste, fizemos um reconhecimento automatizado utilizando a ferramenda Zed Attack Proxy(ZAP). Esta plataforma é um projeto da OWASP criado para facilitar a realização de PenTest, possibilitando que estes testes sejam feitos de maneira automatizada e dinâmica.
+
+Utilizando o ZAP, é possível efetuar uma varredura na infraestrutura da aplicação e procurar falhas comuns, principalmente as relacionadas ao OWASP Top Ten, que, como dito anteriormente, serviu de base para nossos testes. A ferramenta trabalha atuando  como proxy, interceptando requisições enviadas pelo navegador para a aplicação, possibilitando a análise de todo o conteúdo acessado, permitindo aplicação de filtros para procurar por scripts mal formados e outros erros na aplicação que podem levar ao comprometimento da mesma.
 
 \chapter{Potenciais vulnerabilidades}
 
