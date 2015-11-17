@@ -23,13 +23,17 @@
 \sumario
 
 \chapter{Introduçăo}
-Introdução
+Este documento refere-se à execução de testes de penetração no projeto da Bry. Os testes que serão aplicados no alvo (comumente conhecidos como PenTest, ou Penetration Tests) são de extrema importância, pois têm como objetivo avaliar a segurança do mesmo através da simulação de um ataque por uma fonte maliciosa. Durante o teste do sistema e o processo de avaliação, descrito nas próximas sessões, serão detalhadas as possíveis vulnerabilidades encontradas.
 
 \chapter{Avaliação automatizada}
-Avalição automaticada
 
-\section{Ferramenta w3af}
-descricao da ferramenta
+\section{Metodologia OWASP}
+Para realizar os testes, tomaremos como base documentos da OWASP (Open Web Application Security Project). Esse projeto é bastante focado em auxiliar as empresas a desenvolverem, operarem e manterem aplicações cada vez mais seguras e confiáveis, e é altamente utilizado como guia para testes, uma vez que distribui ferramentas e tutoriais detalhados abertamente. Um dos documentos publicados a cada três anos pela OWASP é o Top Ten.
+
+\section{Ferramenta W3AF}
+Antes de aplicarmos qualquer teste, fizemos um reconhecimento automatizado utilizando a ferramenda Zed Attack Proxy(ZAP). Esta plataforma é um projeto da OWASP criado para facilitar a realização de PenTest, possibilitando que estes testes sejam feitos de maneira automatizada e dinâmica.
+
+Utilizando o ZAP, é possível efetuar uma varredura na infraestrutura da aplicação e procurar falhas comuns, principalmente as relacionadas ao OWASP Top Ten, que, como dito anteriormente, serviu de base para nossos testes. A ferramenta trabalha atuando  como proxy, interceptando requisições enviadas pelo navegador para a aplicação, possibilitando a análise de todo o conteúdo acessado, permitindo aplicação de filtros para procurar por scripts mal formados e outros erros na aplicação que podem levar ao comprometimento da mesma.
 
 \chapter{Potenciais vulnerabilidades}
 
@@ -37,11 +41,15 @@ descricao da ferramenta
 
 \subsection{Descrição}
 
-Descrição sobre a parda ta ligado
+Algum cookie possui no seu valor a informação de login do usuário.
+
+\subsection{Impacto}
+
+Um atacante pode estar monitorando a rede, ou essa informação pode ficar no cache do navegador, e ter acesso ao login de um usuário.
 
 \subsection{Remediação}
 
-O que fazer para arrumar
+A informação de login não deve existir no cookie, ou então, cifrar o valor do cookie.
 
 \subsection{Vetores de ataque}
 
@@ -49,23 +57,33 @@ O que fazer para arrumar
 
 \subsection{Descrição}
 
-Descrição sobre a parda ta ligado
+O atributo \emph{HTTPOnly} não está sendo definido no cookie.
+
+\subsection{Impacto}
+
+Sem a definição do atributo \emph{HTTPOnly}, \emph{client side scripts}, como JavaScript, tem acesso ao cookie, assim, caso um atacante consiga injetar código JavaScript na aplicação, ele poderá ter acesso aos cookies.
 
 \subsection{Remediação}
 
-O que fazer para arrumar
+Devem ser definidos para todos os cookies o atributo \emph{HTTPOnly}
 
 \subsection{Vetores de ataque}
 
+E agora 
+e agora
 \section{Sql Injection}
 
 \subsection{Descrição}
 
-Descrição sobre a parda ta ligado
+As falhas de injeção SQL surgem com o envio de dados não confiáveis que são interpretados como parte de uma consulta SQL. O atacante informa dados que enganam o interpretador e executam comandos que acessam dados sem a devida autorização.
+
+\subsection{Impacto}
+
+Dependendo do escopo da vulnerabilidade o atacante pode ler informações sensíveis do banco, modificá-las e executar operações administrativas.
 
 \subsection{Remediação}
 
-O que fazer para arrumar
+Todas as queries devem ser codificadas utilizando queries parametrizadas, ou utilizar \emph{stored procedures}, ou por último, realizar um filtro nos dados fornecidos pelos usuários, bloqueado caracteres especiais do SQL.
 
 \subsection{Vetores de ataque}
 
@@ -77,11 +95,15 @@ e agora
 
 \subsection{Descrição}
 
-Descrição sobre a parda ta ligado
+Este tipo de vulnerabilidade força um usuário final a executar ações indesejadas em uma aplicação web em que ele está atualmente autenticado, através de técnicas, como o envio de um link por e-mail.
+
+\subsection{Impacto}
+
+O atacante pode forçar os usuários de uma aplicação a executarem ações de vontade do atacante. Caso este ataque atinja um usuário administrador (com privilégios), pode comprometer toda a aplicação.
 
 \subsection{Remediação}
 
-O que fazer para arrumar
+Ao receber as requisições a aplicação deve ser capaz de identificar se ela partiu do próprio site. Isso pode ser feito através de um parâmetro \emph{hidden} no formulário com um valor aleatório, que deve ser verificado antes de processar a resposta da requisição
 
 \subsection{Vetores de ataque}
 
@@ -89,23 +111,31 @@ O que fazer para arrumar
 
 \subsection{Descrição}
 
-Descrição sobre a parda ta ligado
+O servidor Apache está com o módulo de status habilitado.
+
+\subsection{Impacto}
+
+Qualquer usuário pode acessar as informações de configuração do Apache.
 
 \subsection{Remediação}
 
-O que fazer para arrumar
+O módulo \emph{mod_status} deve ser desativado.
 
 \subsection{Vetores de ataque}
 
-\section{Cross Site Scripting (XSS)}
+
+The web server has the apache server status module enabled which discloses the following remote server version: &quot;Apache/2.4.7 (Ubuntu) PHP/5.5.9-1ubuntu4.11&quot;.\section{Cross Site Scripting (XSS)}
 
 \subsection{Descrição}
 
-Descrição sobre a parda ta ligado
+Esta falha ocorre quando a aplicação envia dados não confiáveis para o navegador sem o correto tratamento, sendo esses dados códigos que são executados pelo navegador da vítima.
+
+\subsection{Impacto}
+O XSS permite que os atacantes executem \emph{scripts} nos navegadores da vítima, roubem sessões, ou redirecionem o usuário para outros sites.
 
 \subsection{Remediação}
 
-O que fazer para arrumar
+Todos os dados informados pelos usuários e os obtidos em uma fonte de dados devem passar por um filtro. O filtro principal é transformar os dados em entidades do HTML.
 
 \subsection{Vetores de ataque}
 

@@ -6,11 +6,11 @@ As falhas de injeção SQL surgem com o envio de dados não confiáveis que são
 
 \subsection{Impacto}
 
-
+Dependendo do escopo da vulnerabilidade o atacante pode ler informações sensíveis do banco, modificá-las e executar operações administrativas.
 
 \subsection{Remediação}
 
-O que fazer para arrumar
+Todas as queries devem ser codificadas utilizando queries parametrizadas, ou utilizar \emph{stored procedures}, ou por último, realizar um filtro nos dados fornecidos pelos usuários, bloqueado caracteres especiais do SQL.
 
 \subsection{Vetores de ataque}
 
