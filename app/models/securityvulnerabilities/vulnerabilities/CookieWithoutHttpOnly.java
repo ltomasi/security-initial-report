@@ -17,10 +17,6 @@ public class CookieWithoutHttpOnly implements SecurityVulnerability {
     class CookieWithoutHttpOnlyVector {
 
         String url;
-
-        public String encode() {
-            return this.url;
-        }
     }
 
     List<CookieWithoutHttpOnlyVector> vectors = new ArrayList<CookieWithoutHttpOnlyVector>();

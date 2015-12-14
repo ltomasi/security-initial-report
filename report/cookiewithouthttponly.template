@@ -14,7 +14,8 @@ Devem ser definidos para todos os cookies o atributo \emph{HTTPOnly}
 
 \subsection{Vetores de ataque}
 
+\begin{itemize}
 {{#vectors}}
-E agora {{vulParam}}
-e agora
+\item \textbf{Url:} {{url}};
 {{/vectors}}
+\end{itemize}

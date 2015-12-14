@@ -12,15 +12,15 @@ import models.w3afreport.Vulnerability;
 @models.securityvulnerabilities.Vulnerability("Apache Server version")
 public class ApacheServerVersion implements SecurityVulnerability {
 
+    String url;
+
     @Override
     public void decode(Vulnerability w3afVulnerability) {
-        // TODO Auto-generated method stub
-
+	this.url = w3afVulnerability.getUrl();
     }
 
     @Override
     public String encode() {
-        // TODO Auto-generated method stub
         MustacheFactory mf = new DefaultMustacheFactory();
         Mustache mustache = mf.compile("report/apacheserverversion.template");
         StringWriter writer = new StringWriter();

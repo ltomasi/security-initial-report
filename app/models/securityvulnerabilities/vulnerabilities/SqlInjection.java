@@ -16,11 +16,9 @@ public class SqlInjection implements SecurityVulnerability {
 
     class SqlInjectionVector {
 
+	String url;
         String vulParam;
-
-        public String encode() {
-            return this.vulParam;
-        }
+	String http;
     }
 
     List<SqlInjectionVector> vectors = new ArrayList<SqlInjectionVector>();
@@ -29,6 +27,8 @@ public class SqlInjection implements SecurityVulnerability {
     public void decode(models.w3afreport.Vulnerability w3afVulnerability) {
         SqlInjectionVector vector = new SqlInjectionVector();
         vector.vulParam = w3afVulnerability.getVar();
+	vector.url = w3afVulnerability.getUrl();
+	vector.http = w3afVulnerability.getMethod();
         this.vectors.add(vector);
     }
 

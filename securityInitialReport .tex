@@ -9,7 +9,7 @@
 \renewcommand\+{\discretionary{}{}{}}
 \usepackage{seqsplit}
 
-\titulo{Análise do Bry KMS} % Titulo do trabalho
+\titulo{Análise do Mutiilidae II} % Titulo do trabalho
 \subtitulo{Análise de vulnerabilidades web}                % Subtitulo do trabalho (opcional)
 \autor{Laboratório de Segurança em Computação}           % Nome do autor
 \data{22}{maio}{2015}                           % Data da publicaçăo do trabalho
@@ -53,6 +53,9 @@ A informação de login não deve existir no cookie, ou então, cifrar o valor d
 
 \subsection{Vetores de ataque}
 
+\begin{itemize}
+\item \textbf{Url:} http://127.0.0.1/mutillidae/index.php;
+\end{itemize}
 \section{Cookie sem HTTPOnly}
 
 \subsection{Descrição}
@@ -69,8 +72,9 @@ Devem ser definidos para todos os cookies o atributo \emph{HTTPOnly}
 
 \subsection{Vetores de ataque}
 
-E agora 
-e agora
+\begin{itemize}
+\item \textbf{Url:} http://127.0.0.1/mutillidae/index.php;
+\end{itemize}
 \section{Sql Injection}
 
 \subsection{Descrição}
@@ -87,10 +91,11 @@ Todas as queries devem ser codificadas utilizando queries parametrizadas, ou uti
 
 \subsection{Vetores de ataque}
 
-E agora pagename
-e agora
-E agora username
-e agora
+\begin{itemize}
+\item \textbf{Url:} http://127.0.0.1/mutillidae/includes/pop-up-help-context-generator.php; \textbf{Parâmetro:} pagename; \textbf{Método HTTP:} GET;
+\item \textbf{Url:} http://127.0.0.1/mutillidae/webservices/rest/ws-user-account.php; \textbf{Parâmetro:} username; \textbf{Método HTTP:} GET;
+\end{itemize}
+
 \section{Cross Site Request Forgery (CSRF)}
 
 \subsection{Descrição}
@@ -107,6 +112,14 @@ Ao receber as requisições a aplicação deve ser capaz de identificar se ela p
 
 \subsection{Vetores de ataque}
 
+\begin{itemize}
+\item \textbf{Url:} http://127.0.0.1/mutillidae/index.php; \textbf{Método HTTP:} GET;
+\item \textbf{Url:} http://127.0.0.1/mutillidae/webservices/soap/ws-hello-world.php; \textbf{Método HTTP:} GET;
+\item \textbf{Url:} http://127.0.0.1/mutillidae/webservices/soap/ws-user-account.php; \textbf{Método HTTP:} GET;
+\item \textbf{Url:} http://127.0.0.1/mutillidae/webservices/soap/ws-lookup-dns-record.php; \textbf{Método HTTP:} GET;
+\item \textbf{Url:} http://127.0.0.1/mutillidae/webservices/rest/ws-user-account.php; \textbf{Método HTTP:} GET;
+\item \textbf{Url:} http://127.0.0.1/mutillidae/documentation/Mutillidae-Test-Scripts.txt; \textbf{Método HTTP:} POST;
+\end{itemize}
 \section{Apache Server Version}
 
 \subsection{Descrição}
@@ -119,12 +132,13 @@ Qualquer usuário pode acessar as informações de configuração do Apache.
 
 \subsection{Remediação}
 
-O módulo \emph{mod_status} deve ser desativado.
+O módulo \emph{mod\_status} deve ser desativado.
 
-\subsection{Vetores de ataque}
+\subsection{Vetor de ataque}
 
+Através da url http://127.0.0.1/server-status.
 
-The web server has the apache server status module enabled which discloses the following remote server version: &quot;Apache/2.4.7 (Ubuntu) PHP/5.5.9-1ubuntu4.11&quot;.\section{Cross Site Scripting (XSS)}
+\section{Cross Site Scripting (XSS)}
 
 \subsection{Descrição}
 
@@ -139,10 +153,14 @@ Todos os dados informados pelos usuários e os obtidos em uma fonte de dados dev
 
 \subsection{Vetores de ataque}
 
+\begin{itemize}
+\item \textbf{Url:} http://127.0.0.1/mutillidae/includes/pop-up-help-context-generator.php; \textbf{Parâmetro:} pagename; \textbf{Método HTTP:} GET;
+\item \textbf{Url:} http://127.0.0.1/mutillidae/webservices/rest/ws-user-account.php; \textbf{Parâmetro:} username; \textbf{Método HTTP:} GET;
+\end{itemize}
 
 
 \chapter{Considerações finais}
-consideracoes
+Apesar do avanço tecnológico no desenvolvimento de ferramentas que realizam testes de segurança de forma automatizada, elas jamais substituirão por completo a análise manual, pois tais ferramentas podem interpretar os dados equivocadamente, não estando preparadas para as especificidades de cada sistema ou para pertubações externas. Assim, esse relatório é o primeiro passo para que a empresa solicitante comece a mitigar os pontos de falhas reportados neste trabalho, enquanto a análise manual é realizada.
 
 
 \end{document}

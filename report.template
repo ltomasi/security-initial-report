@@ -9,7 +9,7 @@
 \renewcommand\+{\discretionary{}{}{}}
 \usepackage{seqsplit}
 
-\titulo{Análise do Bry KMS} % Titulo do trabalho
+\titulo{Análise do Mutiilidae II} % Titulo do trabalho
 \subtitulo{Análise de vulnerabilidades web}                % Subtitulo do trabalho (opcional)
 \autor{Laboratório de Segurança em Computação}           % Nome do autor
 \data{22}{maio}{2015}                           % Data da publicaçăo do trabalho
@@ -40,7 +40,7 @@ Utilizando o ZAP, é possível efetuar uma varredura na infraestrutura da aplica
 {{{ vulnerabilities }}}
 
 \chapter{Considerações finais}
-consideracoes
+Apesar do avanço tecnológico no desenvolvimento de ferramentas que realizam testes de segurança de forma automatizada, elas jamais substituirão por completo a análise manual, pois tais ferramentas podem interpretar os dados equivocadamente, não estando preparadas para as especificidades de cada sistema ou para pertubações externas. Assim, esse relatório é o primeiro passo para que a empresa solicitante comece a mitigar os pontos de falhas reportados neste trabalho, enquanto a análise manual é realizada.
 
 
 \end{document}

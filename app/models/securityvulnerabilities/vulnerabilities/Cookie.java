@@ -1,6 +1,8 @@
 package models.securityvulnerabilities.vulnerabilities;
 
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
@@ -8,14 +10,28 @@ import com.github.mustachejava.MustacheFactory;
 
 import models.securityvulnerabilities.SecurityVulnerability;
 import models.w3afreport.Vulnerability;
+import models.w3afreport.HttpTransactions;
+import models.w3afreport.HttpTransaction;
+import models.w3afreport.HttpResponse;
+import models.w3afreport.Headers;
+import models.w3afreport.Header;
 
 @models.securityvulnerabilities.Vulnerability("Cookie")
 public class Cookie implements SecurityVulnerability {
 
-    @Override
-    public void decode(Vulnerability w3afVulnerability) {
-        // TODO Auto-generated method stub
+    class CookieVector {
 
+	String url;
+    }
+
+    List<CookieVector> vectors = new ArrayList<CookieVector>();
+
+    @Override
+    public void decode(models.w3afreport.Vulnerability w3afVulnerability) {
+        CookieVector vector = new CookieVector();
+	vector.url = w3afVulnerability.getUrl();
+
+        this.vectors.add(vector);
     }
 
     @Override

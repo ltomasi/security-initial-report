@@ -1,6 +1,8 @@
 package models.securityvulnerabilities.vulnerabilities;
 
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
@@ -12,10 +14,20 @@ import models.w3afreport.Vulnerability;
 @models.securityvulnerabilities.Vulnerability("CSRF vulnerability")
 public class CSRF implements SecurityVulnerability {
 
-    @Override
-    public void decode(Vulnerability w3afVulnerability) {
-        // TODO Auto-generated method stub
+    class CsrfVector {
 
+	String url;
+	String http;
+    }
+
+    List<CsrfVector> vectors = new ArrayList<CsrfVector>();
+
+    @Override
+    public void decode(models.w3afreport.Vulnerability w3afVulnerability) {
+        CsrfVector vector = new CsrfVector();
+	vector.url = w3afVulnerability.getUrl();
+	vector.http = w3afVulnerability.getMethod();
+        this.vectors.add(vector);
     }
 
     @Override

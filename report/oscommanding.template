@@ -14,7 +14,8 @@ O desenvolvedor deve sempre utilizar uma API ao invés de executar comandos dire
 
 \subsection{Vetores de ataque}
 
+\begin{itemize}
 {{#vectors}}
-E agora {{vulParam}}
-e agora
+\item \textbf{Url:} {{url}}; \textbf{Parâmetro:} {{vulParam}}; \textbf{Método HTTP:} {{http}};
 {{/vectors}}
+\end{itemize}

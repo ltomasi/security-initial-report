@@ -14,7 +14,8 @@ A informação de login não deve existir no cookie, ou então, cifrar o valor d
 
 \subsection{Vetores de ataque}
 
+\begin{itemize}
 {{#vectors}}
-E agora {{vulParam}}
-e agora
+\item \textbf{Url:} {{url}};
 {{/vectors}}
+\end{itemize}
