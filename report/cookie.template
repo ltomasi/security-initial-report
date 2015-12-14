@@ -1,0 +1,21 @@
+\section{Cookie com Informações de Login}
+
+\subsection{Descrição}
+
+Algum cookie possui no seu valor a informação de login do usuário.
+
+\subsection{Impacto}
+
+Um atacante pode estar monitorando a rede, ou essa informação pode ficar no cache do navegador, e ter acesso ao login de um usuário.
+
+\subsection{Remediação}
+
+A informação de login não deve existir no cookie, ou então, cifrar o valor do cookie.
+
+\subsection{Vetores de ataque}
+
+\begin{itemize}
+{{#vectors}}
+\item \textbf{Url:} {{url}};
+{{/vectors}}
+\end{itemize}

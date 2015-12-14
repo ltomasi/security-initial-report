@@ -1,0 +1,21 @@
+\section{OS Injection}
+
+\subsection{Descrição}
+
+Falhas de OS Injection caracterizam-se pela execução de comandos do sistema operacional que são fornecidos por um atacante através de uma aplicação web.
+
+\subsection{Impacto}
+
+O atacante consegue executar comandos do sistema operacional com as permissões do servidor web.
+
+\subsection{Remediação}
+
+O desenvolvedor deve sempre utilizar uma API ao invés de executar comandos diretamente no sistema operacional. Caso não exista a API, deve-se ficar atento para filtrar todos os dados fornecidos pelos usuários.
+
+\subsection{Vetores de ataque}
+
+\begin{itemize}
+{{#vectors}}
+\item \textbf{Url:} {{url}}; \textbf{Parâmetro:} {{vulParam}}; \textbf{Método HTTP:} {{http}};
+{{/vectors}}
+\end{itemize}

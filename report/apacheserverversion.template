@@ -1,0 +1,18 @@
+\section{Apache Server Version}
+
+\subsection{Descrição}
+
+O servidor Apache está com o módulo de status habilitado.
+
+\subsection{Impacto}
+
+Qualquer usuário pode acessar as informações de configuração do Apache.
+
+\subsection{Remediação}
+
+O módulo \emph{mod\_status} deve ser desativado.
+
+\subsection{Vetor de ataque}
+
+Através da url {{url}}.
+

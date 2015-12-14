@@ -1,0 +1,46 @@
+
+\documentclass{ufscThesis}
+
+\usepackage{graphicx}
+
+\usepackage[labelsep=endash]{caption} % O separador de legenda é um -
+
+\newcommand{\+}{\discretionary{\mbox{${\bm\cdot}\mkern-1mu$}}{}{}}
+\renewcommand\+{\discretionary{}{}{}}
+\usepackage{seqsplit}
+
+\titulo{Análise do Mutiilidae II} % Titulo do trabalho
+\subtitulo{Análise de vulnerabilidades web}                % Subtitulo do trabalho (opcional)
+\autor{Laboratório de Segurança em Computação}           % Nome do autor
+\data{22}{maio}{2015}                           % Data da publicaçăo do trabalho
+
+\departamento[a]{Departamento de Informática e Estatística}
+
+\begin{document}
+
+\capa  
+
+\sumario
+
+\chapter{Introduçăo}
+Este documento refere-se à execução de testes de penetração no projeto da Bry. Os testes que serão aplicados no alvo (comumente conhecidos como PenTest, ou Penetration Tests) são de extrema importância, pois têm como objetivo avaliar a segurança do mesmo através da simulação de um ataque por uma fonte maliciosa. Durante o teste do sistema e o processo de avaliação, descrito nas próximas sessões, serão detalhadas as possíveis vulnerabilidades encontradas.
+
+\chapter{Avaliação automatizada}
+
+\section{Metodologia OWASP}
+Para realizar os testes, tomaremos como base documentos da OWASP (Open Web Application Security Project). Esse projeto é bastante focado em auxiliar as empresas a desenvolverem, operarem e manterem aplicações cada vez mais seguras e confiáveis, e é altamente utilizado como guia para testes, uma vez que distribui ferramentas e tutoriais detalhados abertamente. Um dos documentos publicados a cada três anos pela OWASP é o Top Ten.
+
+\section{Ferramenta W3AF}
+Antes de aplicarmos qualquer teste, fizemos um reconhecimento automatizado utilizando a ferramenda Zed Attack Proxy(ZAP). Esta plataforma é um projeto da OWASP criado para facilitar a realização de PenTest, possibilitando que estes testes sejam feitos de maneira automatizada e dinâmica.
+
+Utilizando o ZAP, é possível efetuar uma varredura na infraestrutura da aplicação e procurar falhas comuns, principalmente as relacionadas ao OWASP Top Ten, que, como dito anteriormente, serviu de base para nossos testes. A ferramenta trabalha atuando  como proxy, interceptando requisições enviadas pelo navegador para a aplicação, possibilitando a análise de todo o conteúdo acessado, permitindo aplicação de filtros para procurar por scripts mal formados e outros erros na aplicação que podem levar ao comprometimento da mesma.
+
+\chapter{Potenciais vulnerabilidades}
+
+{{{ vulnerabilities }}}
+
+\chapter{Considerações finais}
+Apesar do avanço tecnológico no desenvolvimento de ferramentas que realizam testes de segurança de forma automatizada, elas jamais substituirão por completo a análise manual, pois tais ferramentas podem interpretar os dados equivocadamente, não estando preparadas para as especificidades de cada sistema ou para pertubações externas. Assim, esse relatório é o primeiro passo para que a empresa solicitante comece a mitigar os pontos de falhas reportados neste trabalho, enquanto a análise manual é realizada.
+
+
+\end{document}

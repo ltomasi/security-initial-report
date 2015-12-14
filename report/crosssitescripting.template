@@ -1,0 +1,20 @@
+\section{Cross Site Scripting (XSS)}
+
+\subsection{Descrição}
+
+Esta falha ocorre quando a aplicação envia dados não confiáveis para o navegador sem o correto tratamento, sendo esses dados códigos que são executados pelo navegador da vítima.
+
+\subsection{Impacto}
+O XSS permite que os atacantes executem \emph{scripts} nos navegadores da vítima, roubem sessões, ou redirecionem o usuário para outros sites.
+
+\subsection{Remediação}
+
+Todos os dados informados pelos usuários e os obtidos em uma fonte de dados devem passar por um filtro. O filtro principal é transformar os dados em entidades do HTML.
+
+\subsection{Vetores de ataque}
+
+\begin{itemize}
+{{#vectors}}
+\item \textbf{Url:} {{url}}; \textbf{Parâmetro:} {{vulParam}}; \textbf{Método HTTP:} {{http}};
+{{/vectors}}
+\end{itemize}

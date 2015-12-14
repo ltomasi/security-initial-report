@@ -1,0 +1,22 @@
+\section{Sql Injection}
+
+\subsection{Descrição}
+
+As falhas de injeção SQL surgem com o envio de dados não confiáveis que são interpretados como parte de uma consulta SQL. O atacante informa dados que enganam o interpretador e executam comandos que acessam dados sem a devida autorização.
+
+\subsection{Impacto}
+
+Dependendo do escopo da vulnerabilidade o atacante pode ler informações sensíveis do banco, modificá-las e executar operações administrativas.
+
+\subsection{Remediação}
+
+Todas as queries devem ser codificadas utilizando queries parametrizadas, ou utilizar \emph{stored procedures}, ou por último, realizar um filtro nos dados fornecidos pelos usuários, bloqueado caracteres especiais do SQL.
+
+\subsection{Vetores de ataque}
+
+\begin{itemize}
+{{#vectors}}
+\item \textbf{Url:} {{url}}; \textbf{Parâmetro:} {{vulParam}}; \textbf{Método HTTP:} {{http}};
+{{/vectors}}
+\end{itemize}
+

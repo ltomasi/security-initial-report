@@ -1,0 +1,21 @@
+\section{Cross Site Request Forgery (CSRF)}
+
+\subsection{Descrição}
+
+Este tipo de vulnerabilidade força um usuário final a executar ações indesejadas em uma aplicação web em que ele está atualmente autenticado, através de técnicas, como o envio de um link por e-mail.
+
+\subsection{Impacto}
+
+O atacante pode forçar os usuários de uma aplicação a executarem ações de vontade do atacante. Caso este ataque atinja um usuário administrador (com privilégios), pode comprometer toda a aplicação.
+
+\subsection{Remediação}
+
+Ao receber as requisições a aplicação deve ser capaz de identificar se ela partiu do próprio site. Isso pode ser feito através de um parâmetro \emph{hidden} no formulário com um valor aleatório, que deve ser verificado antes de processar a resposta da requisição
+
+\subsection{Vetores de ataque}
+
+\begin{itemize}
+{{#vectors}}
+\item \textbf{Url:} {{url}}; \textbf{Método HTTP:} {{http}};
+{{/vectors}}
+\end{itemize}

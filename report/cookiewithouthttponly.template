@@ -1,0 +1,21 @@
+\section{Cookie sem HTTPOnly}
+
+\subsection{Descrição}
+
+O atributo \emph{HTTPOnly} não está sendo definido no cookie.
+
+\subsection{Impacto}
+
+Sem a definição do atributo \emph{HTTPOnly}, \emph{client side scripts}, como JavaScript, tem acesso ao cookie, assim, caso um atacante consiga injetar código JavaScript na aplicação, ele poderá ter acesso aos cookies.
+
+\subsection{Remediação}
+
+Devem ser definidos para todos os cookies o atributo \emph{HTTPOnly}
+
+\subsection{Vetores de ataque}
+
+\begin{itemize}
+{{#vectors}}
+\item \textbf{Url:} {{url}};
+{{/vectors}}
+\end{itemize}

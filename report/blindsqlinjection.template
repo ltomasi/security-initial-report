@@ -1,0 +1,20 @@
+\section{Blind Sql Injection}
+
+
+As falhas desse tipo de injeção SQL surgem com o envio de comandos SQL que forçam o banco de dados a retornar respostas do tipo verdadeiro e falso, e assim, baseado na resposta, deduzir informações continas no banco de dados.
+
+\subsection{Impacto}
+
+O atacante consegue obter informações contidas no banco de dados
+
+\subsection{Remediação}
+
+Todas as queries devem ser codificadas utilizando queries parametrizadas, ou utilizar \emph{stored procedures}, ou por último, realizar um filtro nos dados fornecidos pelos usuários, bloqueado caracteres especiais do SQL.
+
+\subsection{Vetores de ataque}
+
+\begin{itemize}
+{{#vectors}}
+\item \textbf{Url:} {{url}}; \textbf{Parâmetro:} {{vulParam}}; \textbf{Método HTTP:} {{http}};
+{{/vectors}}
+\end{itemize}
